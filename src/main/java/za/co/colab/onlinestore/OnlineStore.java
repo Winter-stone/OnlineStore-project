@@ -1,5 +1,6 @@
 package za.co.colab.onlinestore;
 
+import com.google.common.collect.HashBiMap;
 import za.co.colab.onlinestore.customer.Customer;
 
 import java.util.ArrayList;
@@ -9,32 +10,26 @@ import java.util.Map;
 
 public class OnlineStore {
 
-    private Map<Integer, Customer> customers = new HashMap<>();
-    private List<Inventory> products = new ArrayList<>();
-    private int customerId;
+    private Inventory products = new Inventory();
+    private SignUp signUp = new SignUp();
+    private ShoppingCart cart;
 
-
-
-    public OnlineStore(Customer customer) {
-        addCustomer(customer);
-        customerId = 0;
+    public OnlineStore(Customer customer){
+        this.cart = new ShoppingCart();
     }
+
+    public void addItem(String item){
+        if (products.getItems().contains(item));
+    }
+
 
     public Customer getCustomer(int customerId){
-        return customers.get(customerId);
+        return signUp.customers().get(customerId);
     }
 
-    public List<Inventory> invntory(){
+    public List<Inventory> inventory(){
         return products;
     }
 
-    public void addCustomer(Customer customer){
-        if (customer != null){
-            customers.put(++customerId, customer);
-        }
-        else{
-            System.out.println("Not a valid customer");
-        }
-    }
 
 }
